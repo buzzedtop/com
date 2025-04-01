@@ -11,17 +11,13 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: macOS
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: JAVA setup
+      - name: Setup JAVA
         uses: actions/setup-java@v4
         with:
           distribution: 'jetbrains' # See 'Supported distributions' for available options
@@ -33,18 +29,25 @@ jobs:
           channel: 'stable' # Required for web
           cache: true
 
-      - name: Install dependencies
+      - name: Flutter Install dependencies
         run: flutter pub get
 
-      - name: Build web app
+      - name: Flutter Build web app
         run: flutter build web
 
       - name: Upload Artifacts
+        id: deployment
         uses: actions/upload-artifact@v4
         with:
           path: |
             build/web/
-
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macOS
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
