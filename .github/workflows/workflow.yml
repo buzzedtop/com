@@ -18,22 +18,32 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Clone repository
+        uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
+      - name: JAVA setup
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'jetbrains' # See 'Supported distributions' for available options
+          java-version: '21'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable' # Required for web
           cache: true
 
       - name: Install dependencies
         run: flutter pub get
+
       - name: Build web app
         run: flutter build web
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@vb
         with:
-          path: build/web/
+          path: |
+            build/web/
 
       - name: Deploy to GitHub Pages
         id: deployment
