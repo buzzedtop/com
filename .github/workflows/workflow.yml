@@ -33,11 +33,14 @@ jobs:
         run: flutter pub get
 
       - name: Flutter Build web app
-        run: flutter build web
+        run: flutter build web --base-href /${{ github.event.repository.name }}/ --release
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload Artifacts
         id: deployment
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: |
