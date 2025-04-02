@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: macOS
+    runs-on: Linux
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -34,15 +34,16 @@ jobs:
 
       - name: Upload Artifacts
         id: deployment
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: |
             build/web/
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: macOS
+    runs-on: Linux
     needs: build
     steps:
       - name: Deploy to GitHub Pages
