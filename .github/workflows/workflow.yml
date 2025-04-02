@@ -39,8 +39,7 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-
-      - name: Flutter Install dependencies
+        name: Flutter Install dependencies
         run: flutter pub get
 
       - name: Flutter Build web app
