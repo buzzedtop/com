@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: macOS
+    runs-on: Linux
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -20,25 +20,10 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable' # Required for - name: Cache node modules
-        
-      - name: Cache Flutter
-        id: cache-flutter
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-pub-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pubspec.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          channel: 'stable' # Required for web
+          cache: true
 
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: List the state of node modules
-        continue-on-error: true
+      - name: Flutter Install dependencies
         run: flutter pub get
 
       - name: Flutter Build web app
@@ -49,7 +34,7 @@ jobs:
 
       - name: Upload Artifacts
         id: deployment
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: |
@@ -58,7 +43,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: macOS
+    runs-on: Linux
     needs: build
     steps:
       - name: Deploy to GitHub Pages
