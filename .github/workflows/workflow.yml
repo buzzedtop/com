@@ -31,7 +31,7 @@ jobs:
         with:
           path: ${{ matrix.flutter_path }}
           key: ${{ runner.os }}-flutter
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
   build:
