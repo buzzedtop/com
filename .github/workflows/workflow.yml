@@ -16,10 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [Linux]
+        os: [macOS]
         include:
-          - os: Linux
-            flutter_path: ~/actions-runner/_work/_tool/flutter/
           - os: macOS
             flutter_path: ~/actions-runner/_work/_tool/flutter/
       fail-fast: false
@@ -39,10 +37,8 @@ jobs:
     needs: setup
     strategy:
       matrix:
-        os: [Linux]
+        os: [macOS]
         include:
-          - os: Linux
-            flutter_path: ~/actions-runner/_work/_tool/flutter/
           - os: macOS
             flutter_path: ~/actions-runner/_work/_tool/flutter/
       fail-fast: false
