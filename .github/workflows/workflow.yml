@@ -21,7 +21,7 @@ jobs:
           - os: Linux
             flutter_path: ~/actions-runner/_work/_tool/flutter/
           - os: macOS
-            flutter_path: /Users/runner/hostedtoolcache/flutter
+            flutter_path: ~/actions-runner/_work/_tool/flutter/
       fail-fast: false
 
     steps:
@@ -44,7 +44,7 @@ jobs:
           - os: Linux
             flutter_path: ~/actions-runner/_work/_tool/flutter/
           - os: macOS
-            flutter_path: /Users/runner/hostedtoolcache/flutter
+            flutter_path: ~/actions-runner/_work/_tool/flutter/
       fail-fast: false
 
     steps:
