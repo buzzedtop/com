@@ -1,21 +1,24 @@
-name: Deploy to GitHub Pages 2
+name: GitHub Pages
 
 on:
   push:
     branches:
       - main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  pull_request:
 
 jobs:
-  build:
-    runs-on: macOS
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        run: |
+          echo "${GITHUB_WORKSPACE}/_flutter/bin" >> ${GITHUB_PATH}
 
       - name: Install
         run: |
@@ -27,6 +30,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
