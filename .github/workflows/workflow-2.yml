@@ -17,26 +17,17 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Flutter Install dependencies
-        run: flutter pub get
+      - name: Install
+        run: |
+          flutter config --enable-web
+          flutter pub get
 
-      - name: Flutter Build web app
+      - name: Build
         run: flutter build web
 
-      - name: Upload Artifacts
-        id: deployment
-        uses: actions/upload-artifact@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
-          name: github-pages
-          path: |
-            build/web/
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: macOS
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
