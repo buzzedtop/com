@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages 2
 
 on:
   push:
@@ -21,14 +21,11 @@ jobs:
         run: flutter pub get
 
       - name: Flutter Build web app
-        run: flutter build web --base-href /${{ github.event.repository.name }}/ --release
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v4
+        run: flutter build web
 
       - name: Upload Artifacts
         id: deployment
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: |
