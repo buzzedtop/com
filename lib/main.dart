@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 34, 222, 255)),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(30, 144, 255, 1)),
         ),
         home: MyHomePage(),
       ),
@@ -27,13 +27,11 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-
   // ↓ Add this.
   void getNext() {
     current = WordPair.random();
     notifyListeners();
   }
-
   // ↓ Add the code below.
   var favorites = <WordPair>[];
 
@@ -48,8 +46,6 @@ class MyAppState extends ChangeNotifier {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,12 +63,6 @@ class MyHomePage extends StatelessWidget {
                   icon: Icon(Icons.favorite),
                   label: Text('Favorites'),
                 ),
-								NavigationRailDestination(
-                  icon: Icon(Icons.logout),
-                  label: Text('Logout'),
-                ),
-
-
               ],
               selectedIndex: 0,
               onDestinationSelected: (value) {
@@ -94,8 +84,6 @@ class MyHomePage extends StatelessWidget {
 
 
 class GeneratorPage extends StatelessWidget {
-  const GeneratorPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
@@ -150,6 +138,7 @@ class BigCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);       // ← Add this.
+    // ↓ Add this.
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
     );
@@ -158,7 +147,9 @@ class BigCard extends StatelessWidget {
       color: theme.colorScheme.primary,    // ← And also this.
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-         child: Text(
+        // ↓ Change this line.
+        // ↓ Make the following change.
+        child: Text(
           pair.asLowerCase,
           style: style,
           semanticsLabel: "${pair.first} ${pair.second}",
