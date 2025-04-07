@@ -108,20 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class TitlePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      body: Column(
-        children: [
-          Text('A random idea:'),
-        ],
-      ),
-    );
-  }
-}
-
 class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
