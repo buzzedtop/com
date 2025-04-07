@@ -51,7 +51,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   var selectedIndex = 0;     // ← Add this property.
 
   @override
@@ -67,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               SafeArea(
                 child: NavigationRail(
-                  extended: true,
+                  extended: constraints.maxWidth >= 600,  // ← Here.
                   destinations: [
                     NavigationRailDestination(
                       icon: Icon(Icons.home),
