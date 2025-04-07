@@ -67,43 +67,53 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-          body: Column(
+          body: Row(
             children: [
-              Row(
-                children: [
-                  SafeArea(
-                    child: NavigationRail(
-                      extended: constraints.maxWidth >= 600,
-                      destinations: [
-                        NavigationRailDestination(
-                          icon: Icon(Icons.home),
-                          label: Text('Home'),
-                        ),
-                        NavigationRailDestination(
-                          icon: Icon(Icons.favorite),
-                          label: Text('Favorites'),
-                        ),
-                      ],
-                      selectedIndex: selectedIndex,    // ← Change to this.
-                      onDestinationSelected: (value) {
-                        setState(() {
-                          selectedIndex = value;
-                        });
-                      },
+              SafeArea(
+                child: NavigationRail(
+                  extended: constraints.maxWidth >= 600,
+                  destinations: [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.home),
+                      label: Text('Home'),
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      child: page,
+                    NavigationRailDestination(
+                      icon: Icon(Icons.favorite),
+                      label: Text('Favorites'),
                     ),
-                  ),
-                ],
+                  ],
+                  selectedIndex: selectedIndex,    // ← Change to this.
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: page,
+                ),
               ),
             ],
           ),
         );
       }
+    );
+  }
+}
+
+class TitlePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      body: Column(
+        children: [
+          Text('A random idea:'),
+        ],
+      ),
     );
   }
 }
