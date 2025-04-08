@@ -110,6 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.favorite),
                       label: Text('Favorites'),
                     ),
+                     NavigationRailDestination(
+                      icon: Icon(Icons.info),
+                      label: Text('Info'),
+                    ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
