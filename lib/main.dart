@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           Header(),
           Expanded(child: MyHomePage()),
+          Footer(),
         ],
       ),
     );
