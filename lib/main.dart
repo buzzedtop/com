@@ -16,28 +16,37 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Namer App',
         theme: ThemeData(
-                    colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(30, 144, 255, 1)),
-          ),
-        home: Scaffold(
-          body: Container(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Text('Header'),
-                  ],
-                ),
-                Row(
-                  children: [
-                     MyHomePage(),
-                  ]
-                 
-                ),
-              ],
-            ),
-          ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(30, 144, 255, 1)),
         ),
+        home: HomeScreen(),
       ),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Header(),
+          Expanded(child: MyHomePage()),
+        ],
+      ),
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  const Header({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text('Header'),
+      ],
     );
   }
 }
@@ -76,8 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (selectedIndex) {
       case 0:
         page = GeneratorPage();
+        break;
       case 1:
         page = FavoritesPage();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -100,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       label: Text('Favorites'),
                     ),
                   ],
-                  selectedIndex: selectedIndex,    // ← Change to this.
+                  selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
                     setState(() {
                       selectedIndex = value;
@@ -176,18 +187,15 @@ class BigCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);       // ← Add this.
-    // ↓ Add this.
+    final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
     );
 
     return Card(
-      color: theme.colorScheme.primary,    // ← And also this.
+      color: theme.colorScheme.primary,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        // ↓ Change this line.
-        // ↓ Make the following change.
         child: Text(
           pair.asLowerCase,
           style: style,
