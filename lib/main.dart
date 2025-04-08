@@ -51,6 +51,21 @@ class Header extends StatelessWidget {
   }
 }
 
+class Footer extends StatelessWidget {
+  const Footer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text('Buzzed Top, LLC'),
+        const Text('buzzedtop.com'),
+        const Text('CAGE: 9UMC6'),
+      ],
+    );
+  }
+}
+
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
 
