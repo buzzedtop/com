@@ -31770,7 +31770,7 @@ S(a){var s=null
 return new A.pN(new A.oi(new A.UN(),s,s,A.arJ(),A.aqB(),t.xc),s,s,new A.rA(new A.AD(s),"Buzzed Top, LLC",A.a8e(s,A.aad(B.a6,s,s,A.aac(30,144,255,1)),s),s),s,t.wt)}}
 A.UN.prototype={
 $1(a){var s=$.ahA()
-return new A.hY(A.af0(2,s,!0,1e4).gT(0),A.c([],t.pl),A.c(["Project 1","Project 2","Project 3"],t.s),$.aA())},
+return new A.hY(A.af0(2,s,!0,1e4).gT(0),A.c([],t.pl),A.c(["Step Knight","Worship Me","Project 3"],t.s),$.aA())},
 $S:275}
 A.AD.prototype={
 S(a){return A.acs(A.kt(A.c([new A.AA(null),A.a7d(new A.rM(null)),new A.Ap(null)],t.F),B.S,B.a8,B.ao))}}
