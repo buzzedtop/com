@@ -54,7 +54,7 @@ class Header extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            icon: Icon(CompanyLogos.buzzedtop),
+            Icon(CompanyLogos.buzzedtop, size: 24.0, color: Colors.black),
             const Text('Buzzed Top, LLC'),
           ],
         ),
