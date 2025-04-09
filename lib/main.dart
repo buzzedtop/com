@@ -46,7 +46,11 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text('Buzzed Top, LLC'),
+        Container(
+          color: Theme.of(context).colorScheme.secondary,
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('Buzzed Top, LLC'),
+        ),
       ],
     );
   }
@@ -59,9 +63,21 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text('Buzzed Top, LLC'),
-        const Text('buzzedtop.com'),
-        const Text('CAGE: 9UMC6'),
+        Container(
+          color: Theme.of(context).colorScheme.secondary,
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('Buzzed Top, LLC'),
+        ),
+        Container(
+          color: Theme.of(context).colorScheme.secondary,
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('buzzedtop.com'),
+        ),
+        Container(
+          color: Theme.of(context).colorScheme.secondary,
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('CAGE: 9UMC6'),
+        ),
       ],
     );
   }
