@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -288,27 +289,8 @@ class ContentProjectPage extends StatelessWidget {
 class ContentInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
+    return Center(
+      child: Text('New software development company.'),
     );
   }
 }
@@ -316,27 +298,35 @@ class ContentInfoPage extends StatelessWidget {
 class ContentContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
+    return Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.mail, color: Theme.of(context).colorScheme.primary),
+          SizedBox(width: 8),
+          GestureDetector(
+            onTap: () async {
+              // Open mailto link
+              final Uri emailUri = Uri(
+                scheme: 'mailto',
+                path: 'taylor@buzzedtop.com',
+              );
+              if (await canLaunchUrl(emailUri)) {
+                await launchUrl(emailUri, mode: LaunchMode.externalApplication);
+              } else {
+                throw 'Could not launch $emailUri';
+              }
+            },
+            child: Text(
+              'taylor@buzzedtop.com',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
-      ],
+        ],
+      ),
     );
   }
 }
