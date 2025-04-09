@@ -76,6 +76,11 @@ class MyAppState extends ChangeNotifier {
   }
 
   var favorites = <WordPair>[];
+  var projects = <String>[
+    "Project 1",
+    "Project 2",
+    "Project 3",
+  ];
 
   void toggleFavorite() {
     if (favorites.contains(current)) {
@@ -236,42 +241,14 @@ class BigCard extends StatelessWidget {
   }
 }
 
-class ContentFavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
-    );
-  }
-}
-
 class ContentProjectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
-    if (appState.favorites.isEmpty) {
+    if (appState.projects.isEmpty) {
       return Center(
-        child: Text('No favorites yet.'),
+        child: Text('No projects yet.'),
       );
     }
 
@@ -280,12 +257,12 @@ class ContentProjectPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(20),
           child: Text('You have '
-              '${appState.favorites.length} favorites:'),
+              '${appState.projects.length} projects:'),
         ),
-        for (var pair in appState.favorites)
+        for (var project in appState.projects)
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
+            leading: Icon(Icons.label),
+            title: Text(project.toString()),
           ),
       ],
     );
