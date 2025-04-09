@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = ContentHomepage();
         break;
       case 1:
-        page = ContentFavoritesPage();
+        page = ContentProjectPage();
         break;
       case 2:
         page = ContentInfoPage();
@@ -129,8 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       label: Text('Home'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.favorite),
-                      label: Text('Favorites'),
+                      icon: Icon(Icons.source),
+                      label: Text('Projects'),
                     ),
                     NavigationRailDestination(
                       icon: Icon(Icons.info),
@@ -237,6 +237,90 @@ class BigCard extends StatelessWidget {
 }
 
 class ContentFavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+}
+
+class ContentProjectPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+}
+
+class ContentInfoPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+}
+
+class ContentContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
