@@ -100,10 +100,16 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = ContentHomepage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = ContentFavoritesPage();
+        break;
+      case 2:
+        page = ContentInfoPage();
+        break;
+      case 3:
+        page = ContentContactPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -157,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class GeneratorPage extends StatelessWidget {
+class ContentHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
@@ -230,7 +236,7 @@ class BigCard extends StatelessWidget {
   }
 }
 
-class FavoritesPage extends StatelessWidget {
+class ContentFavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
