@@ -94,8 +94,8 @@ class MyAppState extends ChangeNotifier {
 
   var favorites = <WordPair>[];
   var projects = <String>[
-    "Project 1",
-    "Project 2",
+    "Step Knight",
+    "Worship Me",
     "Project 3",
   ];
 
