@@ -24,4 +24,9 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
-  uses-material-design: true
+  uses-material-design: trueflutter:
+  fonts:
+    - family:  MyFlutterApp
+      fonts:
+       - asset: /lib/fonts/MyFlutterApp.ttf
+  
