@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/widgets.dart';
-part 'arc/header.dart';
+import 'src/header.dart';
 
 void main() {
   runApp(MyApp());
