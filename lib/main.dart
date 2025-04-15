@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Buzzed Top, LLC',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(30, 144, 255, 1)),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF1E88E5),
         ),
         home: HomeScreen(),
       ),
