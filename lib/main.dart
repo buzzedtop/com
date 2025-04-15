@@ -5,10 +5,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/widgets.dart';
 part 'package:com_buzzedtop/features/header.dart';
 part 'package:com_buzzedtop/features/footer.dart';
-part 'package:com_buzzedtop/pages/contenthomepage.dart';
-part 'package:com_buzzedtop/pages/contentprojectpage.dart';
-part 'package:com_buzzedtop/pages/contentinfopage.dart';
-part 'package:com_buzzedtop/pages/contentcontactpage.dart';
+part 'package:com_buzzedtop/pages/home.dart';
+part 'package:com_buzzedtop/pages/project.dart';
+part 'package:com_buzzedtop/pages/info.dart';
+part 'package:com_buzzedtop/pages/contact.dart';
 
 void main() {
   runApp(MyApp());
