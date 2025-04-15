@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/widgets.dart';
+part 'package:com_buzzedtop/features/header.dart';
+part 'package:com_buzzedtop/features/footer.dart';
+part 'package:com_buzzedtop/pages/contenthomepage.dart';
+part 'package:com_buzzedtop/pages/contentprojectpage.dart';
+part 'package:com_buzzedtop/pages/contentinfopage.dart';
+part 'package:com_buzzedtop/pages/contentcontactpage.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,51 +42,6 @@ class HomeScreen extends StatelessWidget {
           Expanded(child: MyHomePage()),
           Footer(),
         ],
-      ),
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  const Header({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.secondary,
-      padding: const EdgeInsets.all(8.0),
-      child: DefaultTextStyle(
-        style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(CompanyLogos.buzzedtop, size: 48.0, color: Theme.of(context).colorScheme.onSecondary),
-            const Text('Buzzed Top, LLC'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  const Footer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.secondary,
-      padding: const EdgeInsets.all(8.0),
-      child: DefaultTextStyle(
-        style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-        const Text('Buzzed Top, LLC'),
-        const Text('buzzedtop.com'),
-        const Text('CAGE: 9UMC6'),
-          ],
-        ),
       ),
     );
   }
@@ -187,75 +148,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class ContentHomepage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-            Card(
-            elevation: 4,
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                'Website Relaunch',
-                style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                SizedBox(height: 8),
-                Text(
-                'This is to mark the relaunch of the website are being rewritten in flutter, as all primary development is transitioning to flutter for our projects. This is to maintain multi-platform distribution to pruducts. The star doesn\'t work yet.',
-                style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                SizedBox(height: 16),
-                Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Author: Taylor @ Buzzed Top - 2025-04-08',
-                  style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  Row(
-                  children: [
-                    IconButton(
-                    icon: Icon(Icons.star),
-                    color: Colors.amber,
-                    onPressed: () {
-                      // Increment star count logic
-                    },
-                    ),
-                    Text(
-                    '0', // Replace with the actual star count
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                  ),
-                ],
-                ),
-              ],
-              ),
-            ),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
 class BigCard extends StatelessWidget {
   const BigCard({
     super.key,
@@ -285,78 +177,11 @@ class BigCard extends StatelessWidget {
   }
 }
 
-class ContentProjectPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
 
-    if (appState.projects.isEmpty) {
-      return Center(
-        child: Text('No projects yet.'),
-      );
-    }
 
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.projects.length} projects:'),
-        ),
-        for (var project in appState.projects)
-          ListTile(
-            leading: Icon(Icons.label),
-            title: Text(project.toString()),
-          ),
-      ],
-    );
-  }
-}
 
-class ContentInfoPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('New software development company.'),
-    );
-  }
-}
 
-class ContentContactPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.mail, color: Theme.of(context).colorScheme.primary),
-          SizedBox(width: 8),
-          GestureDetector(
-            onTap: () async {
-              // Open mailto link
-              final Uri emailUri = Uri(
-                scheme: 'mailto',
-                path: 'taylor@buzzedtop.com',
-              );
-              if (await canLaunchUrl(emailUri)) {
-                await launchUrl(emailUri, mode: LaunchMode.externalApplication);
-              } else {
-                throw 'Could not launch $emailUri';
-              }
-            },
-            child: Text(
-              'taylor@buzzedtop.com',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+
 
 class CompanyLogos {
   CompanyLogos._();

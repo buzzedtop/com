@@ -1,0 +1,13 @@
+Main
+-lib
+--main.dart
+--pages
+---homepage
+---projects
+---info
+---contact us
+--features
+---navigation rail
+---company logos
+---header
+---footer
