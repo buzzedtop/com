@@ -5,10 +5,14 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/widgets.dart';
 part 'package:com_buzzedtop/features/header.dart';
 part 'package:com_buzzedtop/features/footer.dart';
+
 part 'package:com_buzzedtop/pages/home.dart';
 part 'package:com_buzzedtop/pages/project.dart';
 part 'package:com_buzzedtop/pages/info.dart';
 part 'package:com_buzzedtop/pages/contact.dart';
+
+part 'package:com_buzzedtop/assets/logos.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -175,19 +179,4 @@ class BigCard extends StatelessWidget {
       ),
     );
   }
-}
-
-
-
-
-
-
-
-class CompanyLogos {
-  CompanyLogos._();
-
-  static const _kFontFam = 'CompanyLogos';
-  static const String? _kFontPkg = null;
-
-  static const IconData buzzedtop = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
