@@ -1,3 +1,4 @@
+part of 'package:com_buzzedtop/main.dart';
 
 class CompanyLogos {
   CompanyLogos._();
