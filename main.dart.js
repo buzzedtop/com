@@ -30948,7 +30948,7 @@ return A.yn(A.kg(A.c([new A.rR("Updating homepage template","Working on reformat
 A.yQ.prototype={
 S(a){return A.yn(A.fj("New software development company.",null),null,null)}}
 A.yR.prototype={
-S(a){var s,r,q,p,o=null,n=["Step Knight","Worship Me","Project 3"],m=A.c([new A.dz(B.ys,A.fj("You have 3 projects:",o),o)],t.E)
+S(a){var s,r,q,p,o=null,n=["Step Knight","Worship.direct","Project 3"],m=A.c([new A.dz(B.ys,A.fj("You have 3 projects:",o),o)],t.E)
 for(s=0;s<3;++s){r=n[s]
 m.push(new A.AB(A.kI(B.yO,o,o,o),A.fj(r,o),o))}q=A.au([null,0],t.st,t.S)
 p=m.length
