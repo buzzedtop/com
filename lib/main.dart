@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 part 'package:com_buzzedtop/features/header.dart';
 part 'package:com_buzzedtop/features/footer.dart';
 part 'package:com_buzzedtop/features/posts.dart';
@@ -55,74 +55,49 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
 
+  final List<Widget> pages = [
+    ContentHomepage(),
+    ContentProjectPage(),
+    ContentInfoPage(),
+    ContentContactPage(),
+  ];
+
+  final List<NavigationRailDestination> navDestinations = [
+    NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
+    NavigationRailDestination(icon: Icon(Icons.source), label: Text('Projects')),
+    NavigationRailDestination(icon: Icon(Icons.info), label: Text('Info')),
+    NavigationRailDestination(icon: Icon(Icons.mail), label: Text('Contact Us')),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = ContentHomepage();
-        break;
-      case 1:
-        page = ContentProjectPage();
-        break;
-      case 2:
-        page = ContentInfoPage();
-        break;
-      case 3:
-        page = ContentContactPage();
-        break;
-      default:
-        throw UnimplementedError('no widget for $selectedIndex');
-    }
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
           body: Row(
             children: [
-              NavRail(constraints),
+              SafeArea(
+                child: NavigationRail(
+                  extended: constraints.maxWidth >= 600,
+                  destinations: navDestinations,
+                  selectedIndex: selectedIndex,
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                ),
+              ),
               Expanded(
                 child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  child: page,
+                  child: pages[selectedIndex],
                 ),
               ),
             ],
           ),
         );
-      }
+      },
     );
-  }
-
-  SafeArea NavRail(BoxConstraints constraints) {
-    return SafeArea(
-              child: NavigationRail(
-                extended: constraints.maxWidth >= 600,
-                destinations: [
-                  NavigationRailDestination(
-                    icon: Icon(Icons.home),
-                    label: Text('Home'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.source),
-                    label: Text('Projects'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.info),
-                    label: Text('Info'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.mail),
-                    label: Text('Contact Us'),
-                  ),
-                ],
-                selectedIndex: selectedIndex,
-                onDestinationSelected: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                },
-              ),
-            );
   }
 }
