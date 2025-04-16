@@ -1,8 +1,6 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/widgets.dart';
 part 'package:com_buzzedtop/features/header.dart';
 part 'package:com_buzzedtop/features/footer.dart';
 part 'package:com_buzzedtop/features/posts.dart';
@@ -24,16 +22,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
+    return MaterialApp(
         title: 'Buzzed Top, LLC',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF1E88E5)),
         ),
         home: HomeScreen(),
-      ),
-    );
+      );
   }
 }
 
@@ -50,14 +45,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class MyAppState extends ChangeNotifier {
-  var projects = <String>[
-    "Step Knight",
-    "Worship Me",
-    "Project 3",
-  ];
 }
 
 class MyHomePage extends StatefulWidget {
