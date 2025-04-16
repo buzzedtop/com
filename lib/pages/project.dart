@@ -5,7 +5,7 @@ class ContentProjectPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var projects = <String>[
     "Step Knight",
-    "Worship Me",
+    "Worship.direct",
     "Project 3",
   ];
 
