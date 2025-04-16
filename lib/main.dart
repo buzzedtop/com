@@ -55,20 +55,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
 
-  final List<Widget> pages = [
-    ContentHomepage(),
-    ContentProjectPage(),
-    ContentInfoPage(),
-    ContentContactPage(),
-  ];
-
-  final List<NavigationRailDestination> navDestinations = [
-    NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
-    NavigationRailDestination(icon: Icon(Icons.source), label: Text('Projects')),
-    NavigationRailDestination(icon: Icon(Icons.info), label: Text('Info')),
-    NavigationRailDestination(icon: Icon(Icons.mail), label: Text('Contact Us')),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -79,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SafeArea(
                 child: NavigationRail(
                   extended: constraints.maxWidth >= 600,
-                  destinations: navDestinations,
+                  destinations: NavigationData.navDestinations,
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
                     setState(() {
@@ -91,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  child: pages[selectedIndex],
+                  child: NavigationData.pages[selectedIndex],
                 ),
               ),
             ],
@@ -100,4 +86,20 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+}
+
+class NavigationData {
+  static final List<Widget> pages = [
+    ContentHomepage(),
+    ContentProjectPage(),
+    ContentInfoPage(),
+    ContentContactPage(),
+  ];
+
+  static final List<NavigationRailDestination> navDestinations = [
+    NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
+    NavigationRailDestination(icon: Icon(Icons.source), label: Text('Projects')),
+    NavigationRailDestination(icon: Icon(Icons.info), label: Text('Info')),
+    NavigationRailDestination(icon: Icon(Icons.mail), label: Text('Contact Us')),
+  ];
 }
