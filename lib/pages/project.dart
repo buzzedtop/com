@@ -6,7 +6,9 @@ class ContentProjectPage extends StatelessWidget {
     var projects = <String>[
     "Step Knight",
     "Worship.direct",
-    "Project 3",
+    "Open-Source SpaceScape gh.buzzedtop.com/spacescape/",
+    "Open-Source Darkness Dungeon gh.buzzedtop.com/darkness_dungeon",
+    "Open-Source Minesweeper gh.buzzedtop.com/minesweeper/"
   ];
 
     if (projects.isEmpty) {
