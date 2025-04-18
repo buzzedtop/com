@@ -30948,8 +30948,8 @@ return A.yn(A.kg(A.c([new A.n3("Github Copilot Multifile Editong"," Experimentin
 A.yQ.prototype={
 S(a){return A.yn(A.fj("New software development company.",null),null,null)}}
 A.yR.prototype={
-S(a){var s,r,q,p,o=null,n=["Step Knight","Worship.direct","Project 3"],m=A.c([new A.dz(B.ys,A.fj("You have 3 projects:",o),o)],t.E)
-for(s=0;s<3;++s){r=n[s]
+S(a){var s,r,q,p,o=null,n=["Step Knight","Worship.direct","Open-Source SpaceScape gh.buzzedtop.com/spacescape/","Open-Source Darkness Dungeon gh.buzzedtop.com/darkness_dungeon","Open-Source Minesweeper gh.buzzedtop.com/minesweeper/"],m=A.c([new A.dz(B.ys,A.fj("You have 5 projects:",o),o)],t.E)
+for(s=0;s<5;++s){r=n[s]
 m.push(new A.AB(A.kI(B.yO,o,o,o),A.fj(r,o),o))}q=A.au([null,0],t.st,t.S)
 p=m.length
 return new A.AC(new A.XE(!0,!0,!0,m,q),o,B.bG,!1,o,o,B.vl,!1,o,p,B.aL,B.Ez,o,B.ae,B.av,o)}}
