@@ -1,0 +1,3 @@
+[submodule "global-workflow"]
+	path = ".github/workflows/"
+	url = git@github.com:buzzedtop/global-workflow.git
