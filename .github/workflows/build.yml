@@ -28,12 +28,6 @@ jobs:
       - name: Build
         run: flutter build web
 
-      - name: Set CNAME
-        uses: 1arp/create-a-file-action@0.4.5
-        with:
-          path: ./build/web/CNAME
-          content: ${{vars.CNAME}}   
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
